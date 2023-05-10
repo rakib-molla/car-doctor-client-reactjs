@@ -6,15 +6,18 @@ const About = () => {
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
-                    <div className='lg:marker:w-1/2'>
-                    <img src={person} className="max-w-sm rounded-lg shadow-2xl" />
-                    <img src={parts} className="max-w-sm rounded-lg shadow-2xl" />
+                    <div className='lg:w-1/2 relative'>
+                    <img src={person} className="w-3/4 rounded-lg shadow-2xl" />
+                    <img src={parts} className="w-1/2 absolute right-5 top-1/2 border-8 border-white rounded-lg shadow-2xl" />
                     </div>
                     
                     <div className='lg:w-1/2'>
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
+                        <h3 className='text-3xl text-orange-500 font-bold'>About Us</h3>
+                        <h1 className="text-5xl font-bold mb-5">we are qualified & of experience in this field</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam tempore id facilis cupiditate, reprehenderit nobis aperiam ut? Qui alias ipsam molestias recusandae quasi exercitationem omnis! Porro aperiam officiis quae sequi!</p>
+
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <button className="btn btn-warning bg-orange-800 text-white border-none">Get More Info</button>
                     </div>
                 </div>
             </div>
