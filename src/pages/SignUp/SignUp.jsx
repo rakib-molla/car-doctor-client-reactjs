@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
-const Login = () => {
-    const handleLogin =(event)=>{
+const SignUp = () => {
+    const handleSignUp =(event)=>{
         event.preventDefault();
-        console.log('login click');
+        console.log('signup click');
     }
     return (
         <div>
@@ -14,8 +14,14 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
-                            <h1 className="text-3xl text-center font-bold">Login now!</h1>
-                            <form onSubmit={handleLogin}>
+                            <h1 className="text-3xl text-center font-bold">SignUP</h1>
+                            <form onSubmit={handleSignUp}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
+                                    </label>
+                                    <input type="text" placeholder="email" name="name" className="input input-bordered" />
+                                </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
@@ -32,10 +38,10 @@ const Login = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <input type="submit" className='btn btn-primary' value="Login" />
+                                    <input type="submit" className='btn btn-warning' value="SignUp" />
                                 </div>
                             </form>
-                            <p className='my-4 text-center'>New to Car Doctors <Link to="/signup" className='text-orange-600 font-bold'>Signup</Link></p>
+                            <p className='my-4 text-center'>Already have an Account <Link to="/login" className='text-orange-600 font-bold'>Login</Link></p>
                         </div>
                     </div>
                 </div>
@@ -44,4 +50,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
