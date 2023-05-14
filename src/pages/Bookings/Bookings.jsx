@@ -1,8 +1,72 @@
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import BookingRow from "./BookingRow/BookingRow";
 
 const Bookings = () => {
+    const { user } = useContext(AuthContext);
+    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+
+    const [bookings, setBooking] = useState([])
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setBooking(data);
+            })
+    }, [])
+
+    const handleDelete =(id)=>{
+        const proceed = confirm('are you sure want to delete');
+        if(proceed){
+            fetch(`http://localhost:5000/bookings/${id}`,{
+                method: 'DELETE'
+            })
+            .then(res=> res.json())
+            .then(data =>{
+                console.log(data);
+                if(data.deletedCount > 0){
+                    alert('delete successful');
+                    const remaining = bookings.filter(booking => booking._id !== id);
+                    setBooking(remaining);
+                }
+            })
+        }
+    }
+
     return (
         <div>
-            
+            <h1>your bookings {bookings.length}</h1>
+            <div className="overflow-x-auto w-full">
+                <table className="table w-full">
+                   
+                    <thead>
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
+                            <th>Service Image</th>
+                            <th>Title</th>
+                            <th> Price </th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {
+                        bookings.map( booking => 
+                            <BookingRow 
+                                key={booking._id}
+                                booking={booking}
+                                handleDelete={handleDelete}
+                            ></BookingRow>
+                        )
+                       }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
